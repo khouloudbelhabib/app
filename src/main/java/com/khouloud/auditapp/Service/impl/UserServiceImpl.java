@@ -1,9 +1,13 @@
-package com.khouloud.auditapp.Service;
+package com.khouloud.auditapp.Service.impl;
 
+import com.khouloud.auditapp.Controller.AuthenticationController;
 import com.khouloud.auditapp.Repository.UserRepository;
 import com.khouloud.auditapp.Repository.RoleRepository;
-import com.khouloud.auditapp.entities.Role;
-import com.khouloud.auditapp.entities.User;
+import com.khouloud.auditapp.Service.UserService;
+import com.khouloud.auditapp.Entity.Role;
+import com.khouloud.auditapp.Entity.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,9 +21,11 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Service("UserServiceImpl")
+@Service("UserService")
 @Transactional
 public class UserServiceImpl implements UserService, UserDetailsService {
+    Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
+
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -35,34 +41,27 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public Role saveRole(Role role) {
-        return roleRepository.save(role);
-    }
-
-    @Override
     public void addRoleToClient(String username, String roleName) {
         Role role = roleRepository.findByRoleName(roleName);
         User User = userRepository.findByUsername(username);
         User.getRole().add(role);
-
-
     }
 
     @Override
-    public User findClientbyUsername(String username) {
+    public User  findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("------->   " + username);
-        User user = findClientbyUsername(username);
+        User user = findByUsername(username);
         System.out.println("------->   " + user.getId());
 
         if (user == null) throw new UsernameNotFoundException(username);
         Collection<GrantedAuthority> authorities = new ArrayList<>();
         user.getRole().forEach(r -> {
-            System.out.println("--rrr----->   " + r);
+            log.info("rolee :{}",r);
 
             authorities.add(new SimpleGrantedAuthority(r.getRoleName()));
         });

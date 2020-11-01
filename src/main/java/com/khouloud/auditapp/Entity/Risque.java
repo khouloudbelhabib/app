@@ -1,4 +1,4 @@
-package com.khouloud.auditapp.entities;
+package com.khouloud.auditapp.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

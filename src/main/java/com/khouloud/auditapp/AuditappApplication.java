@@ -9,10 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class AuditappApplication {
-    @Bean
-     public BCryptPasswordEncoder getEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(AuditappApplication.class, args);

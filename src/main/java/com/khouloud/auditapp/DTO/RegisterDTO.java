@@ -1,6 +1,6 @@
-package com.khouloud.auditapp.Controller;
+package com.khouloud.auditapp.DTO;
 
-public class RegisterForm {
+public class RegisterDTO {
     private String username;
     private String password;
     private String repassword;

@@ -1,8 +1,7 @@
-package com.khouloud.auditapp.entities;
+package com.khouloud.auditapp.Entity;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import net.minidev.json.annotate.JsonIgnore;
 
@@ -10,6 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -21,16 +21,18 @@ public class User implements Serializable {
     @Column(unique = true)
     private String username;
     private String secteur;
-    private int  nombreanee;
+    private int nombreanee;
     private boolean enabled;
     private String logo;
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
-    private Collection<Role> role =new ArrayList<>();
+    private Collection<Role> role;
+
     @JsonIgnore
     public String getPassword() {
         return password;
     }
+
     @JsonSetter
     public void setPassword(String password) {
         this.password = password;
@@ -43,6 +45,7 @@ public class User implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public String getLogo() {
         return logo;
