@@ -7,8 +7,8 @@ import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,24 +25,15 @@ public class User implements Serializable {
     private boolean enabled;
     private String logo;
     private String password;
-    @OneToOne
-    @JoinColumn(name = "id")
-    private Evaluation evaluation;
+    private String email;
     @ManyToMany(fetch = FetchType.EAGER)
-    private Collection<Role> role;
-    @OneToMany(mappedBy = "user")
-    private List<Reclamation> reclamationlist;
-    @OneToMany (mappedBy = "user")
-    private  List<rendezvouz> rendezvouzlist;
-    @OneToOne
-    @JoinColumn(name = "id")
-    private Rapport rapport;
+    private Collection<Role> role =new ArrayList<>();
+
 
     @JsonIgnore
     public String getPassword() {
         return password;
     }
-
     @JsonSetter
     public void setPassword(String password) {
         this.password = password;
@@ -73,14 +64,6 @@ public class User implements Serializable {
         this.nombreanee = nombreanee;
     }
 
-    public Collection<Role> getRole() {
-        return role;
-    }
-
-    public void setRole(Collection<Role> role) {
-        this.role = role;
-    }
-
     public String getSecteur() {
         return secteur;
     }
@@ -105,35 +88,19 @@ public class User implements Serializable {
         this.enabled = enabled;
     }
 
-    public Evaluation getEvaluation() {
-        return evaluation;
+    public Collection<Role> getRole() {
+        return role;
     }
 
-    public void setEvaluation(Evaluation evaluation) {
-        this.evaluation = evaluation;
+    public void setRole(Collection<Role> role) {
+        this.role = role;
     }
 
-    public List<Reclamation> getReclamationlist() {
-        return reclamationlist;
+    public String getEmail() {
+        return email;
     }
 
-    public void setReclamationlist(List<Reclamation> reclamationlist) {
-        this.reclamationlist = reclamationlist;
-    }
-
-    public List<rendezvouz> getRendezvouzlist() {
-        return rendezvouzlist;
-    }
-
-    public void setRendezvouzlist(List<rendezvouz> rendezvouzlist) {
-        this.rendezvouzlist = rendezvouzlist;
-    }
-
-    public Rapport getRapport() {
-        return rapport;
-    }
-
-    public void setRapport(Rapport rapport) {
-        this.rapport = rapport;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

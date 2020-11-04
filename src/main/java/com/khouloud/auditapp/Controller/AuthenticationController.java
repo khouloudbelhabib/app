@@ -47,8 +47,7 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public User register(@RequestBody RegisterDTO registerForm) {
-        if (!registerForm.getPassword().equals(registerForm.getRepassword()))
-            throw new RuntimeException("you must confirm your password please !!!");
+
         User User = userService.findByUsername(registerForm.getUsername());
         if (User != null) throw new RuntimeException("this Client already exists");
         User user1 = new User();
