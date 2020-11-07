@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.io.Serializable;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,6 +22,8 @@ public class Risque implements Serializable {
     private String niveau;
     private String impact;
     private String solution;
+    @ManyToMany
+    List<Rapport>rapports;
 
     public Long getId() {
         return id;
@@ -67,5 +71,13 @@ public class Risque implements Serializable {
 
     public void setSolution(String solution) {
         this.solution = solution;
+    }
+
+    public List<Rapport> getRapports() {
+        return rapports;
+    }
+
+    public void setRapports(List<Rapport> rapports) {
+        this.rapports = rapports;
     }
 }
