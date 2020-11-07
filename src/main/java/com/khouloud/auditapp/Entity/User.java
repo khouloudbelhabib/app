@@ -25,14 +25,15 @@ public class User implements Serializable {
     private boolean enabled;
     private String logo;
     private String password;
+    private String email;
     @ManyToMany(fetch = FetchType.EAGER)
-    private Collection<Role> role;
+    private Collection<Role> role =new ArrayList<>();
+
 
     @JsonIgnore
     public String getPassword() {
         return password;
     }
-
     @JsonSetter
     public void setPassword(String password) {
         this.password = password;
@@ -63,14 +64,6 @@ public class User implements Serializable {
         this.nombreanee = nombreanee;
     }
 
-    public Collection<Role> getRole() {
-        return role;
-    }
-
-    public void setRole(Collection<Role> role) {
-        this.role = role;
-    }
-
     public String getSecteur() {
         return secteur;
     }
@@ -93,5 +86,21 @@ public class User implements Serializable {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Collection<Role> getRole() {
+        return role;
+    }
+
+    public void setRole(Collection<Role> role) {
+        this.role = role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
