@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EvaluationRepository  extends JpaRepository<Exception,Long> {
-    public List<Evaluation> findEvaluationByUser(User user);
+public interface EvaluationRepository  extends JpaRepository<Evaluation,Long> {
+    public List<Evaluation> findByUser(User user);
 }

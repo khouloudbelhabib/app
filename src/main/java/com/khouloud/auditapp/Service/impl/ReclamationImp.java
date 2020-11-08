@@ -22,7 +22,7 @@ public class ReclamationImp implements ReclamationService {
 
     @Override
     public List<Reclamation> getAllreclamationByUser(User user) {
-        return reclamationRepository.findReclamationByUser(user);
+        return reclamationRepository.findByUser(user);
     }
 
     @Override

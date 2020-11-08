@@ -14,7 +14,7 @@ public class EvaluationController {
     @Autowired
     private EvaluationService evaluationService;
     @GetMapping("/getEvaluations")
-    public List<Exception> listEvaluations() {
+    public List<Evaluation> listEvaluations() {
         return evaluationService.GetAllEvaluation();
     }
     @GetMapping("/getEvaluationByUser")

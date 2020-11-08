@@ -12,7 +12,7 @@ import java.sql.Time;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class RendezVouz {
+public class RendezVous {
     @Id
     @GeneratedValue
     private Long id;

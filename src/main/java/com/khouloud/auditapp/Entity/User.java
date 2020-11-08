@@ -29,7 +29,7 @@ public class User implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> role =new ArrayList<>();
     @OneToMany(mappedBy = "user")
-    private Collection<RendezVouz>rendezVouzCollection;
+    private Collection<RendezVous> rendezVousCollection;
     @OneToMany(mappedBy = "user")
     private Collection<Reclamation>reclamations;
     @JsonIgnore
@@ -106,12 +106,12 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public Collection<RendezVouz> getRendezVouzCollection() {
-        return rendezVouzCollection;
+    public Collection<RendezVous> getRendezVousCollection() {
+        return rendezVousCollection;
     }
 
-    public void setRendezVouzCollection(Collection<RendezVouz> rendezVouzCollection) {
-        this.rendezVouzCollection = rendezVouzCollection;
+    public void setRendezVousCollection(Collection<RendezVous> rendezVousCollection) {
+        this.rendezVousCollection = rendezVousCollection;
     }
 
     public Collection<Reclamation> getReclamations() {

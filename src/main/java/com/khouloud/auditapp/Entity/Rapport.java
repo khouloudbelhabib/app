@@ -17,9 +17,19 @@ public class Rapport {
     @ManyToMany
     private List<Risque>risqueList;
 
+    @ManyToOne
+    User user;
     public Rapport(Long id, List<Risque> risqueList) {
         this.id = id;
         this.risqueList = risqueList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getId() {

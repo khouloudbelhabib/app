@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,6 +15,7 @@ public class Evaluation {
     @Id
     @GeneratedValue
     private Long id;
+    @OneToOne
     private User user;
     private String commentaire;
     private int niveaudesatesfaction;

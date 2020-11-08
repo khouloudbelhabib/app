@@ -54,7 +54,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/authentification/**").permitAll().and().authorizeRequests()
+                .authorizeRequests().antMatchers("/authentification/**").permitAll().and()
+                .authorizeRequests().antMatchers("/register/**").permitAll().and()
+                .authorizeRequests()
                 .anyRequest().authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler);
         JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(userDetailsService, jwtTokenUtil,
