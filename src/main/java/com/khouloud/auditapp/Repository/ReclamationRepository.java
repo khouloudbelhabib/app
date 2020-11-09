@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ReclamationRepository  extends JpaRepository<Reclamation,Long> {
-    public List<Reclamation> findReclamationByUser(User user);
+    public List<Reclamation> findByUser(User user);
 }

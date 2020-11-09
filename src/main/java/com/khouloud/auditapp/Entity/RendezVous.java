@@ -8,11 +8,12 @@ import org.springframework.data.annotation.LastModifiedDate;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 
 
 @Entity
-public class Reclamation implements Serializable {
+public class RendezVous implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -29,12 +30,15 @@ public class Reclamation implements Serializable {
     @Column(name = "MODIFIED_TS", nullable = false)
     private Date modifiedTime;
 
+    private String lieu;
+    private String jour;
+    private Time heurededebut;
+    private Time heuredefin;
     @ManyToOne
     private User user;
 
-    public Reclamation() {
+    public RendezVous() {
     }
-
     public Long getId() {
         return id;
     }
@@ -57,6 +61,38 @@ public class Reclamation implements Serializable {
 
     public void setModifiedTime(Date modifiedTime) {
         this.modifiedTime = modifiedTime;
+    }
+    public Time getHeurededebut() {
+        return heurededebut;
+    }
+
+    public void setHeurededebut(Time heurededebut) {
+        this.heurededebut = heurededebut;
+    }
+
+    public Time getHeuredefin() {
+        return heuredefin;
+    }
+
+    public void setHeuredefin(Time heuredefin) {
+        this.heuredefin = heuredefin;
+    }
+
+
+    public String getJour() {
+        return jour;
+    }
+
+    public void setJour(String jour) {
+        this.jour = jour;
+    }
+
+    public String getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
     }
 
     public User getUser() {

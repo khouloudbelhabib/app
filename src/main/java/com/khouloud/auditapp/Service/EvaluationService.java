@@ -6,9 +6,14 @@ import com.khouloud.auditapp.Entity.User;
 import java.util.List;
 
 public interface EvaluationService {
-    public List<Exception> GetAllEvaluation();
-    public List<Evaluation>GetAllEvaluationByUser(User user);
-    public Evaluation addEvaluation(Evaluation evaluation);
-    public boolean deleteEvaluation(Long id);
-    public Evaluation updateEvaluation(Evaluation evaluation);
+
+    List<Evaluation> GetAllEvaluation();
+
+    List<Evaluation> GetAllEvaluationByUser(User user);
+
+    Evaluation addEvaluation(Evaluation evaluation);
+
+    boolean deleteEvaluation(Long id);
+
+    Evaluation updateEvaluation(Evaluation evaluation);
 }

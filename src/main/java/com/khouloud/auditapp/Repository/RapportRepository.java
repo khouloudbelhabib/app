@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RapportRepository extends JpaRepository<Rapport,Long> {
-    public Rapport findRapportByUser(User user);
+    public Rapport findByUser(User user);
 }

@@ -1,44 +1,62 @@
 package com.khouloud.auditapp.Entity;
 
-import com.fasterxml.jackson.annotation.JsonSetter;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import net.minidev.json.annotate.JsonIgnore;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotNull
+    @CreatedDate
+    @Column(name = "CREATION_TS", nullable = false, updatable = false)
+    private Date createTime;
+
+    @NotNull
+    @LastModifiedDate
+    @Column(name = "MODIFIED_TS", nullable = false)
+    private Date modifiedTime;
+
     @Column(unique = true)
     private String username;
+
     private String secteur;
+
     private int nombreanee;
+
     private boolean enabled;
+
     private String logo;
-    private String password;
-    private String email;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Collection<Role> role =new ArrayList<>();
-    @OneToMany(mappedBy = "user")
-    private Collection<RendezVouz>rendezVouzCollection;
-    @OneToMany(mappedBy = "user")
-    private Collection<Reclamation>reclamations;
+
     @JsonIgnore
-    public String getPassword() {
-        return password;
-    }
-    @JsonSetter
-    public void setPassword(String password) {
-        this.password = password;
+    private String password;
+
+    private String email;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Role> role = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private Collection<RendezVous> rendezVousCollection;
+
+    @OneToMany(mappedBy = "user")
+    private Collection<Reclamation> reclamations;
+
+    public User() {
     }
 
     public Long getId() {
@@ -49,6 +67,29 @@ public class User implements Serializable {
         this.id = id;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getModifiedTime() {
+        return modifiedTime;
+    }
+
+    public void setModifiedTime(Date modifiedTime) {
+        this.modifiedTime = modifiedTime;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getLogo() {
         return logo;
@@ -106,12 +147,12 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public Collection<RendezVouz> getRendezVouzCollection() {
-        return rendezVouzCollection;
+    public Collection<RendezVous> getRendezVouzCollection() {
+        return rendezVousCollection;
     }
 
-    public void setRendezVouzCollection(Collection<RendezVouz> rendezVouzCollection) {
-        this.rendezVouzCollection = rendezVouzCollection;
+    public void setRendezVouzCollection(Collection<RendezVous> rendezVousCollection) {
+        this.rendezVousCollection = rendezVousCollection;
     }
 
     public Collection<Reclamation> getReclamations() {

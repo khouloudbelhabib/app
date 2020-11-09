@@ -21,13 +21,13 @@ public class EvaluationServiceImp implements EvaluationService {
     private EvaluationRepository evaluationRepository;
 
     @Override
-    public List<Exception> GetAllEvaluation() {
+    public List<Evaluation> GetAllEvaluation() {
         return  evaluationRepository.findAll();
     }
 
     @Override
     public List<Evaluation> GetAllEvaluationByUser(User user) {
-        return evaluationRepository.findEvaluationByUser(user);
+        return evaluationRepository.findByUser(user);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class RapportServiceImpl implements RapportService {
     private RapportRepository rapportRepository;
     @Override
     public Rapport getRapportByUser(User user) {
-        return rapportRepository.findRapportByUser(user);
+        return rapportRepository.findByUser(user);
     }
 
     @Override

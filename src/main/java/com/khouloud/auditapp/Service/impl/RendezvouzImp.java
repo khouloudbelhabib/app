@@ -1,8 +1,8 @@
 package com.khouloud.auditapp.Service.impl;
 
-import com.khouloud.auditapp.Entity.RendezVouz;
+import com.khouloud.auditapp.Entity.RendezVous;
 import com.khouloud.auditapp.Entity.User;
-import com.khouloud.auditapp.Repository.RendezVouzRepository;
+import com.khouloud.auditapp.Repository.RendezVousRepository;
 import com.khouloud.auditapp.Service.RendezvouzService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,26 +14,26 @@ import java.util.List;
 @Transactional
 public class RendezvouzImp  implements RendezvouzService {
     @Autowired
-    private RendezVouzRepository rendezVouzRepository;
+    private RendezVousRepository rendezVouzRepository;
     @Override
-    public List<RendezVouz> getAllrendezvouz() {
+    public List<RendezVous> getAllrendezvouz() {
         return rendezVouzRepository.findAll();
     }
 
     @Override
-    public List<RendezVouz> getAllrendezvouzByUser(User user) {
-        return rendezVouzRepository.findByRendezVouzByUser(user);
+    public List<RendezVous> getAllrendezvouzByUser(User user) {
+        return rendezVouzRepository.findByUser(user);
     }
 
     @Override
-    public RendezVouz addRendervouz(RendezVouz rendezVouz) {
-        return rendezVouzRepository.save(rendezVouz);
+    public RendezVous addRendervouz(RendezVous rendezVous) {
+        return rendezVouzRepository.save(rendezVous);
 
     }
 
     @Override
-    public RendezVouz updateRendervouz(RendezVouz rendezVouz) {
-        return rendezVouzRepository.save(rendezVouz);
+    public RendezVous updateRendervouz(RendezVous rendezVous) {
+        return rendezVouzRepository.save(rendezVous);
 
     }
 
