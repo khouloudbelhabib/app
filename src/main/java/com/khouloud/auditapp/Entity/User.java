@@ -52,7 +52,10 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "user")
     private Collection<RendezVous> rendezVousCollection;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 91bbc2c353bd0224bbb8aaf5fec6cc90b354817c
     @OneToMany(mappedBy = "user")
     private Collection<Reclamation> reclamations;
 
