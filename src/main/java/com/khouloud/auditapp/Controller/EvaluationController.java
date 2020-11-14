@@ -13,22 +13,29 @@ import java.util.List;
 public class EvaluationController {
     @Autowired
     private EvaluationService evaluationService;
+
     @GetMapping("/getEvaluations")
     public List<Evaluation> listEvaluations() {
         return evaluationService.GetAllEvaluation();
     }
+
     @GetMapping("/getEvaluationByUser")
     public List<Evaluation> listEvaluationsByUser(@PathVariable User user) {
         return evaluationService.GetAllEvaluationByUser(user);
     }
+
     @PostMapping("/saveEvaluation")
     public Evaluation save(@RequestBody Evaluation evaluation) {
         return evaluationService.addEvaluation(evaluation);
     }
+
     @DeleteMapping("/deleteEvaluation/{id}")
     public boolean delete(@PathVariable Long id) {
-        return evaluationService.deleteEvaluation(id);}
+        return evaluationService.deleteEvaluation(id);
+    }
+
     @PostMapping("/updateEvaluation")
     public Evaluation update(@RequestBody Evaluation evaluation) {
-        return evaluationService.updateEvaluation(evaluation);}
+        return evaluationService.updateEvaluation(evaluation);
+    }
 }
