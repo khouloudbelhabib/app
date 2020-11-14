@@ -38,7 +38,7 @@ public class RendezVouzController {
         return rendezvouzService.updateRendervouz(rendezVous);}
     @PostMapping("/ajouterunrendezvous")
     public Optional<RendezVous> ajouterrendezvouz (@RequestBody RendezVous rendezVous){
-      return   rendezvouzService.p(rendezVous);
+      return   rendezvouzService.prendreRendezVous(rendezVous);
 
     }
 }

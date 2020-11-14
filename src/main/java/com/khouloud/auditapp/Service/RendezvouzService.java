@@ -16,4 +16,7 @@ public interface RendezvouzService {
     RendezVous updateRendervouz(RendezVous rendezVous);
 
     boolean deleteRendezvouz(Long id);
+
+    public Optional<RendezVous> prendreRendezVous (RendezVous rendezVous);
+
 }
