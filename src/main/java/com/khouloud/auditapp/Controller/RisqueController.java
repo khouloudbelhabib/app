@@ -19,7 +19,7 @@ public class RisqueController {
         return risqueService.getAll();
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/getbyid/{id}")
     public Risque get(@PathVariable Long id) throws Exception {
         return risqueService.get(id);
     }

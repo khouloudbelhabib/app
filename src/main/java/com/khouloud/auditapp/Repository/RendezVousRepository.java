@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface RendezVousRepository extends JpaRepository<RendezVous,Long> {
     public List<RendezVous> findByUser(User user);
+
 }

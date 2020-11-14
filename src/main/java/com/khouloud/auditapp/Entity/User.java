@@ -103,7 +103,7 @@ public class User implements Serializable {
         return nombreanee;
     }
 
-    public void setNombreanee(int nombreanee) {
+    public void setNombreanee( int nombreanee) {
         this.nombreanee = nombreanee;
     }
 
@@ -162,4 +162,5 @@ public class User implements Serializable {
     public void setReclamations(Collection<Reclamation> reclamations) {
         this.reclamations = reclamations;
     }
+
 }

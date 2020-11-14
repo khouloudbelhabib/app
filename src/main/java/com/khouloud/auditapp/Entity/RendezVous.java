@@ -31,7 +31,7 @@ public class RendezVous implements Serializable {
     private Date modifiedTime;
 
     private String lieu;
-    private String jour;
+    private Date  date ;
     private Time heurededebut;
     private Time heuredefin;
     @ManyToOne
@@ -79,12 +79,12 @@ public class RendezVous implements Serializable {
     }
 
 
-    public String getJour() {
-        return jour;
+    public Date getDate() {
+        return date;
     }
 
-    public void setJour(String jour) {
-        this.jour = jour;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getLieu() {
