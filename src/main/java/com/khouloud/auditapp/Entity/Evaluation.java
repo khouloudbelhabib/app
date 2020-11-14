@@ -1,6 +1,7 @@
 package com.khouloud.auditapp.Entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @AllArgsConstructor
+@Data
+
 @NoArgsConstructor
 @Entity
 public class Evaluation {
@@ -17,6 +20,7 @@ public class Evaluation {
     private Long id;
     @OneToOne
     private User user;
+    private String Username;
     private String commentaire;
     private int niveaudesatesfaction;
 
@@ -50,5 +54,13 @@ public class Evaluation {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
     }
 }

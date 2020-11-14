@@ -17,7 +17,7 @@ import java.util.Collection;
 public class User implements Serializable {
     @Id
     @GeneratedValue
-    private Long id;
+    private long id;
     @Column(unique = true)
     private String username;
     private String secteur;
@@ -62,7 +62,7 @@ public class User implements Serializable {
         return nombreanee;
     }
 
-    public void setNombreanee(int nombreanee) {
+    public void setNombreanee( int nombreanee) {
         this.nombreanee = nombreanee;
     }
 
@@ -121,4 +121,5 @@ public class User implements Serializable {
     public void setReclamations(Collection<Reclamation> reclamations) {
         this.reclamations = reclamations;
     }
+
 }

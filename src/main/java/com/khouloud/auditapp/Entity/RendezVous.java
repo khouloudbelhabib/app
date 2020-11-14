@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.sql.Date;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +20,7 @@ public class RendezVous {
     @GeneratedValue
     private Long id;
     private String lieu;
-    private String jour;
+    private Date  date ;
     private Time heurededebut;
     private Time heuredefin;
     @ManyToOne
@@ -47,12 +50,12 @@ public class RendezVous {
         this.id = id;
     }
 
-    public String getJour() {
-        return jour;
+    public Date getDate() {
+        return date;
     }
 
-    public void setJour(String jour) {
-        this.jour = jour;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getLieu() {

@@ -17,6 +17,8 @@ public class Reclamation {
     private Long id;
     @ManyToOne
     private User user;
+    private String username;
+    private String reclamation;
 
     public Long getId() {
         return id;
@@ -33,4 +35,21 @@ public class Reclamation {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public String getReclamation() {
+        return reclamation;
+    }
+
+    public void setReclamation(String reclamation) {
+        this.reclamation = reclamation;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
 }
