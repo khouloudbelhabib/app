@@ -23,7 +23,7 @@ public class RisqueServiceImpl implements RisqueService {
 
     @Override
     public Risque save(Risque risque) {
-        return risqueRepository.saveAndFlush(risque);
+        return risqueRepository.save(risque);
     }
 
     @Override

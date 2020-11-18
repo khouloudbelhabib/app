@@ -1,12 +1,9 @@
 package com.khouloud.auditapp.Entity;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -17,17 +14,17 @@ public class Risque implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @CreatedDate
-    @Column(name = "CREATION_TS", nullable = false, updatable = false)
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
 
-    @NotNull
-    @LastModifiedDate
-    @Column(name = "MODIFIED_TS", nullable = false)
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedTime;
 
     private String Nom;
@@ -58,7 +55,7 @@ public class Risque implements Serializable {
     }
 
     public Date getModifiedTime() {
-        return modifiedTime;
+       return modifiedTime;
     }
 
     public void setModifiedTime(Date modifiedTime) {
@@ -113,4 +110,18 @@ public class Risque implements Serializable {
         this.rapports = rapports;
     }
 
+    @Override
+    public String toString() {
+        return "Risque{" +
+                "id=" + id +
+                ", createTime=" + createTime +
+                ", modifiedTime=" + modifiedTime +
+                ", Nom='" + Nom + '\'' +
+                ", selected=" + selected +
+                ", niveau='" + niveau + '\'' +
+                ", impact='" + impact + '\'' +
+                ", solution='" + solution + '\'' +
+                ", rapports=" + rapports +
+                '}';
+    }
 }

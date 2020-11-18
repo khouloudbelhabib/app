@@ -6,7 +6,7 @@ import com.khouloud.auditapp.Entity.User;
 import java.util.List;
 import java.util.Optional;
 
-public interface RendezvouzService {
+public interface RendezVousService {
     List<RendezVous> getAllrendezvouz();
 
     List<RendezVous> getAllrendezvouzByUser(User user);

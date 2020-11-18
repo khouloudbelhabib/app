@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 @Service
 @Transactional
-public class ReclamationImp implements ReclamationService {
+public class ReclamationServiceImp implements ReclamationService {
     @Autowired
     private ReclamationRepository reclamationRepository ;
     @Override

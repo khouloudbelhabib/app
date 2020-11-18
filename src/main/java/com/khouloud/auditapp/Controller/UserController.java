@@ -3,6 +3,7 @@ package com.khouloud.auditapp.Controller;
 import com.khouloud.auditapp.Entity.User;
 import com.khouloud.auditapp.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -17,5 +18,10 @@ public class UserController {
     public User getByUsername(@PathVariable String username) {
         System.out.println("username "+userService.findByUsername(username));
         return userService.findByUsername(username);
+    }
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String adminAccess() {
+        return "Admin Board.";
     }
 }

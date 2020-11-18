@@ -3,7 +3,7 @@ package com.khouloud.auditapp.Service.impl;
 import com.khouloud.auditapp.Entity.RendezVous;
 import com.khouloud.auditapp.Entity.User;
 import com.khouloud.auditapp.Repository.RendezVousRepository;
-import com.khouloud.auditapp.Service.RendezvouzService;
+import com.khouloud.auditapp.Service.RendezVousService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class RendezvouzImp implements RendezvouzService {
+public class RendezVousServiceImp implements RendezVousService {
     boolean test = false;
     @Autowired
     private RendezVousRepository rendezVouzRepository;
