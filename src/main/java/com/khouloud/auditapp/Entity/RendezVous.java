@@ -1,10 +1,9 @@
 package com.khouloud.auditapp.Entity;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
@@ -18,14 +17,12 @@ public class RendezVous implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @CreatedDate
-    @Column(name = "CREATION_TS", nullable = false, updatable = false)
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
 
-    @NotNull
-    @LastModifiedDate
-    @Column(name = "MODIFIED_TS", nullable = false)
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedTime;
 
     private String lieu;
@@ -34,7 +31,6 @@ public class RendezVous implements Serializable {
     private Time heuredefin;
     @ManyToOne
     private User user;
-
     public RendezVous() {
     }
     public Long getId() {

@@ -1,12 +1,7 @@
 package com.khouloud.auditapp.Entity;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Date;
 
 
 @Entity
@@ -16,16 +11,14 @@ public class Reclamation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    //@NotNull
+    //@CreationTimestamp
+    //@Temporal(TemporalType.TIMESTAMP)
+    //private Date createTime;
 
-    @NotNull
-    @CreatedDate
-    @Column(name = "CREATION_TS", nullable = false, updatable = false)
-    private Date createTime;
-
-    @NotNull
-    @LastModifiedDate
-    @Column(name = "MODIFIED_TS", nullable = false)
-    private Date modifiedTime;
+    //@UpdateTimestamp
+    //@Temporal(TemporalType.TIMESTAMP)
+    //private Date modifiedTime;
 
     @ManyToOne
     private User user;
@@ -43,21 +36,21 @@ public class Reclamation implements Serializable {
         this.id = id;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
+   // public Date getCreateTime() {
+     //   return createTime;
+   // }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+    //public void setCreateTime(Date createTime) {
+      //  this.createTime = createTime;
+    //}
 
-    public Date getModifiedTime() {
-        return modifiedTime;
-    }
+    //public Date getModifiedTime() {
+      //  return modifiedTime;
+    //}
 
-    public void setModifiedTime(Date modifiedTime) {
-        this.modifiedTime = modifiedTime;
-    }
+    //public void setModifiedTime(Date modifiedTime) {
+      //  this.modifiedTime = modifiedTime;
+    //}
 
     public User getUser() {
         return user;

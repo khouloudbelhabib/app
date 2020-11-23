@@ -13,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
+public class User  implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -160,4 +160,17 @@ public class User implements Serializable {
         this.reclamations = reclamations;
     }
 
+
+
+    public User(String email, String username, String secteur) {
+        this.createTime = createTime;
+        this.email = email;
+        this.enabled = enabled;
+        this.role = role;
+        this.username = username;
+        this.secteur = secteur;
+        this.logo = logo;
+        this.nombreanee = nombreanee;
+
+    }
 }

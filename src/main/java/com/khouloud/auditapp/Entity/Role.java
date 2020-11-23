@@ -1,10 +1,9 @@
 package com.khouloud.auditapp.Entity;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,20 +15,23 @@ public class Role  implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @CreatedDate
-    @Column(name = "CREATION_TS", nullable = false, updatable = false)
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
 
-    @NotNull
-    @LastModifiedDate
-    @Column(name = "MODIFIED_TS", nullable = false)
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedTime;
 
     private String roleName;
 
     public Role() {
     }
+
+    public Role(String roleName) {
+        this.roleName = roleName;
+    }
+
     public Long getId() {
         return id;
     }
@@ -53,6 +55,7 @@ public class Role  implements Serializable {
     public void setModifiedTime(Date modifiedTime) {
         this.modifiedTime = modifiedTime;
     }
+
     public String getRoleName() {
         return roleName;
     }

@@ -60,6 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/evaluation/**").permitAll().and()
                 .authorizeRequests().antMatchers("/reclamation/**").permitAll().and()
                 .authorizeRequests().antMatchers("/rendezvous/**").permitAll().and()
+                .authorizeRequests().antMatchers("/user/**").permitAll().and()
                 .authorizeRequests()
                 .anyRequest().authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler);

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/user")
@@ -24,4 +26,19 @@ public class UserController {
     public String adminAccess() {
         return "Admin Board.";
     }
+    @GetMapping("/all")
+    public String allAccess() {
+        return "Public Content.";
+    }
+
+    @GetMapping("/user")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    public String userAccess() {
+        return "User Content.";
+    }
+    @GetMapping("/ListUsers")
+    public List<User> getAllUser(){
+        return userService.getAll();
+    }
+
 }

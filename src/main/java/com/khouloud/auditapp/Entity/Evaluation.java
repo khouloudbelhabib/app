@@ -1,10 +1,9 @@
 package com.khouloud.auditapp.Entity;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,19 +16,18 @@ public class Evaluation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @CreatedDate
-    @Column(name = "CREATION_TS", nullable = false, updatable = false)
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
 
-    @NotNull
-    @LastModifiedDate
-    @Column(name = "MODIFIED_TS", nullable = false)
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedTime;
 
     private String commentaire;
 
     private int niveaudesatesfaction;
+    private String Username;
 
     @ManyToOne
     private User user;
@@ -91,5 +89,15 @@ public class Evaluation implements Serializable {
         this.user = user;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
+    }
 }
