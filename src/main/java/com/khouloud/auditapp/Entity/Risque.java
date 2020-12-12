@@ -27,23 +27,15 @@ public class Risque implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedTime;
 
-    private String Nom;
-    private Boolean selected;
-    private String niveau;
-    private String impact;
+    private String question;
+    private String risque;
+    private String reponse;
     private String solution;
+    private String interlocuteurcible;
     @ManyToMany
     List<Rapport>rapports;
 
     public Risque() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Date getCreateTime() {
@@ -54,52 +46,36 @@ public class Risque implements Serializable {
         this.createTime = createTime;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getInterlocuteurcible() {
+        return interlocuteurcible;
+    }
+
+    public void setInterlocuteurcible(String interlocuteurcible) {
+        this.interlocuteurcible = interlocuteurcible;
+    }
+
     public Date getModifiedTime() {
-       return modifiedTime;
+        return modifiedTime;
     }
 
     public void setModifiedTime(Date modifiedTime) {
         this.modifiedTime = modifiedTime;
     }
 
-    public String getImpact() {
-        return impact;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setImpact(String impact) {
-        this.impact = impact;
-    }
-
-    public String getNiveau() {
-        return niveau;
-    }
-
-    public void setNiveau(String niveau) {
-        this.niveau = niveau;
-    }
-
-    public String getNom() {
-        return Nom;
-    }
-
-    public void setNom(String nom) {
-        Nom = nom;
-    }
-
-    public Boolean getSelected() {
-        return selected;
-    }
-
-    public void setSelected(Boolean selected) {
-        this.selected = selected;
-    }
-
-    public String getSolution() {
-        return solution;
-    }
-
-    public void setSolution(String solution) {
-        this.solution = solution;
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     public List<Rapport> getRapports() {
@@ -110,18 +86,31 @@ public class Risque implements Serializable {
         this.rapports = rapports;
     }
 
-    @Override
-    public String toString() {
-        return "Risque{" +
-                "id=" + id +
-                ", createTime=" + createTime +
-                ", modifiedTime=" + modifiedTime +
-                ", Nom='" + Nom + '\'' +
-                ", selected=" + selected +
-                ", niveau='" + niveau + '\'' +
-                ", impact='" + impact + '\'' +
-                ", solution='" + solution + '\'' +
-                ", rapports=" + rapports +
-                '}';
+    public String getReponse() {
+        return reponse;
+    }
+
+    public void setReponse(String reponse) {
+        this.reponse = reponse;
+    }
+
+    public String getRisque() {
+        return risque;
+    }
+
+    public void setRisque(String risque) {
+        this.risque = risque;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getSolution() {
+        return solution;
+    }
+
+    public void setSolution(String solution) {
+        this.solution = solution;
     }
 }

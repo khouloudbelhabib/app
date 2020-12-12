@@ -1,5 +1,6 @@
 package com.khouloud.auditapp.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -26,6 +27,7 @@ public class RendezVous implements Serializable {
     private Date modifiedTime;
 
     private String lieu;
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date  date ;
     private Time heurededebut;
     private Time heuredefin;

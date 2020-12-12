@@ -9,12 +9,10 @@ import java.util.Date;
 
 @Entity
 public class Role  implements Serializable {
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    //private static final long serialVersionUID = 1L;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
@@ -62,5 +60,10 @@ public class Role  implements Serializable {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public Role( Long id , String roleName) {
+        this.roleName = roleName;
+        this.id=id;
     }
 }

@@ -47,13 +47,31 @@ public class User  implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> role = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     private Collection<RendezVous> rendezVousCollection;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
     private Collection<Reclamation> reclamations;
+    @OneToMany
+    private Collection<Evaluation> evaluationCollection ;
 
     public User() {
+    }
+
+    public Collection<Evaluation> getEvaluationCollection() {
+        return evaluationCollection;
+    }
+
+    public Collection<RendezVous> getRendezVousCollection() {
+        return rendezVousCollection;
+    }
+
+    public void setRendezVousCollection(Collection<RendezVous> rendezVousCollection) {
+        this.rendezVousCollection = rendezVousCollection;
+    }
+
+    public void setEvaluationCollection(Collection<Evaluation> evaluationCollection) {
+        this.evaluationCollection = evaluationCollection;
     }
 
     public Long getId() {
@@ -162,7 +180,7 @@ public class User  implements Serializable {
 
 
 
-    public User(String email, String username, String secteur) {
+    public User(String email, String username, String secteur ,  boolean enabled , Collection<Role> role , Collection<Evaluation> evaluationCollection ,String logo,int nombreanee,Collection<Reclamation> reclamations) {
         this.createTime = createTime;
         this.email = email;
         this.enabled = enabled;
@@ -171,6 +189,8 @@ public class User  implements Serializable {
         this.secteur = secteur;
         this.logo = logo;
         this.nombreanee = nombreanee;
+        this.evaluationCollection = evaluationCollection;
+        this.reclamations = reclamations;
 
     }
 }

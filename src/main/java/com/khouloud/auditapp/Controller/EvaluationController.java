@@ -19,8 +19,8 @@ public class EvaluationController {
         return evaluationService.GetAllEvaluation();
     }
 
-    @GetMapping("/getEvaluationByUser")
-    public List<Evaluation> listEvaluationsByUser(@PathVariable User user) {
+    @GetMapping("/getEvaluationByUser/{user}")
+    public List<Evaluation> listEvaluationsByUser(@PathVariable (value = "user") User user) {
         return evaluationService.GetAllEvaluationByUser(user);
     }
 
@@ -38,4 +38,5 @@ public class EvaluationController {
     public Evaluation update(@RequestBody Evaluation evaluation) {
         return evaluationService.updateEvaluation(evaluation);
     }
+
 }

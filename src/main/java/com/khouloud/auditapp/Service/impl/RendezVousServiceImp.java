@@ -89,6 +89,7 @@ public class RendezVousServiceImp implements RendezVousService {
                     (resultat = rv.getDate().equals(rendezVous.getDate())) && (Math.abs(d - d1) < 60) ||
                     (resultat = rv.getDate().equals(rendezVous.getDate())) && (Math.abs(d - d2) < 15) || (Math.abs(d - d3) < 60)) {
                 id_r = rv.getId();
+                System.out.println("impossible");
             }
         }
         return this.rendezVouzRepository.findById(id_r);

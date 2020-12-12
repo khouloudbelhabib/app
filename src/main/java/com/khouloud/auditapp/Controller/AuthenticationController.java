@@ -3,7 +3,6 @@ package com.khouloud.auditapp.Controller;
 import com.khouloud.auditapp.DTO.LoginRequest;
 import com.khouloud.auditapp.DTO.LoginResponse;
 import com.khouloud.auditapp.DTO.RegisterDTO;
-import com.khouloud.auditapp.Entity.Role;
 import com.khouloud.auditapp.Entity.User;
 import com.khouloud.auditapp.Repository.RoleRepository;
 import com.khouloud.auditapp.Repository.UserRepository;
@@ -41,6 +40,7 @@ public class AuthenticationController {
     RoleRepository roleRepository;
 
 
+
     @PostMapping(value = "/login")
     public ResponseEntity<LoginResponse> register(@RequestBody LoginRequest loginUser) throws AuthenticationException {
         log.info("LoginRequest:{}", loginUser);
@@ -64,15 +64,16 @@ public class AuthenticationController {
 
         user1.setUsername(registerForm.getUsername());
         user1.setEmail(registerForm.getEmail());
-        Role role = new Role("User");
-        System.out.println(user1.getUsername());
-
-        System.out.println(user1.getRole());
         user1.setPassword(registerForm.getPassword());
-        userService.saveUser(user1);
-        userService.addRoleToClient(registerForm.getUsername(),"User");
 
         System.out.println(user1.getRole());
+
+
+        userService.saveUser(user1);
+        userService.addRoleToClient(user1.getUsername(),"Role_USER");
+
+        System.out.println(user1.getRole());
+        System.out.println(registerForm.getRole());
         return user1;
     }}
 

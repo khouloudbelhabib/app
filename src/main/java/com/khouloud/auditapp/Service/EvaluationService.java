@@ -16,4 +16,5 @@ public interface EvaluationService {
     boolean deleteEvaluation(Long id);
 
     Evaluation updateEvaluation(Evaluation evaluation);
+
 }

@@ -23,7 +23,7 @@ import java.util.List;
 
 @Service("UserService")
 @Transactional
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService , UserDetailsService {
     Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
@@ -58,20 +58,23 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public Role save(Role role) {
+        return roleRepository.save(role);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("------->   " + username);
         User user = findByUsername(username);
-        System.out.println(user);
         System.out.println("------->   " + user.getId());
+
         if (user == null) throw new UsernameNotFoundException(username);
         Collection<GrantedAuthority> authorities = new ArrayList<>();
         user.getRole().forEach(r -> {
             log.info("rolee :{}",r);
 
             authorities.add(new SimpleGrantedAuthority(r.getRoleName()));
-            log.info("--authorities  "+authorities);
         });
-
         System.out.println("--ruser.getUsername()rr----->   " + user.getUsername());
         System.out.println("--getPassword----->   " + user.getPassword());
         System.out.println("--authorities----->   " +authorities);

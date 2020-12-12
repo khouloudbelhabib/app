@@ -23,7 +23,7 @@ public class RendezVouzController {
     private RendezVousService rendezVousService;
 
 
-        @GetMapping("/getRendezVous")
+    @GetMapping("/getRendezVous")
     public List<RendezVous> listRendezVouz() {
         return rendezVousService.getAllrendezvouz();
     }
